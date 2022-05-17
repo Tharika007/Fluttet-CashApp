@@ -21,14 +21,14 @@ class CashAdvance {
   });
 }
 
-class RecivedCashesHistory extends StatefulWidget {
-  const RecivedCashesHistory({Key? key}) : super(key: key);
+class HomeAll extends StatefulWidget {
+  const HomeAll({Key? key}) : super(key: key);
 
   @override
-  State<RecivedCashesHistory> createState() => _RecivedCashesHistoryState();
+  State<HomeAll> createState() => _HomeAllState();
 }
 
-class _RecivedCashesHistoryState extends State<RecivedCashesHistory> {
+class _HomeAllState extends State<HomeAll> {
   List<CashAdvance> cash = [
     CashAdvance(
       icon: Icons.pending_actions,
@@ -68,33 +68,6 @@ class _RecivedCashesHistoryState extends State<RecivedCashesHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.white,
-            selectedItemColor: HexColor("#EC5F5F"),
-            unselectedItemColor: Colors.grey,
-            iconSize: 27,
-            showUnselectedLabels: false,
-            showSelectedLabels: false,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.dashboard_outlined),
-                label: 'Dashboard',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.explore_outlined),
-                label: 'Discover',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.email_outlined),
-                label: 'Messeges',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle_outlined),
-                label: 'Profile',
-              ),
-            ],
-          ),
       backgroundColor: primarybackgroundcolor,
       body: SingleChildScrollView(
         child: Column(
@@ -110,28 +83,28 @@ class _RecivedCashesHistoryState extends State<RecivedCashesHistory> {
                       "Status",
                       style: TextStyle(
                           color: HexColor("#00008B"),
-                          fontSize: 15,
+                          fontSize: 13,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Request No.",
                       style: TextStyle(
                           color: HexColor("#00008B"),
-                          fontSize: 15,
+                          fontSize: 13,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Project",
                       style: TextStyle(
                           color: HexColor("#00008B"),
-                          fontSize: 15,
+                          fontSize: 13,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Amount(RS)",
                       style: TextStyle(
                           color: HexColor("#00008B"),
-                          fontSize: 15,
+                          fontSize: 13,
                           fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -173,28 +146,43 @@ Widget buildrows({
                 Icon(
                   items.icon,
                   color: items.iconcolor,
+                  size: 20,
                 ),
                 Text(
                   items.status,
-                  style: TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: Colors.grey, fontSize: 13),
                 ),
               ],
             ),
             Column(
               children: [
-                Text(items.requestno),
-                Text(items.date,
-                 style: TextStyle(color: Colors.grey),),
+                Text(
+                  items.requestno,
+                  style: const TextStyle(color: Colors.black, fontSize: 13),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  items.date,
+                  style: const TextStyle(color: Colors.grey, fontSize: 13),
+                ),
               ],
             ),
             Column(
               children: [
-                Text(items.purpose),
+                Text(
+                  items.purpose,
+                  style: const TextStyle(color: Colors.black, fontSize: 13),
+                ),
               ],
             ),
             Column(
               children: [
-                Text(items.amount),
+                Text(
+                  items.amount,
+                  style: const TextStyle(color: Colors.black, fontSize: 13),
+                ),
               ],
             ),
           ],

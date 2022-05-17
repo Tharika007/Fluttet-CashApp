@@ -1,4 +1,5 @@
 import 'package:cashapp/Screens/CashRequest.dart';
+import 'package:cashapp/Screens/CashierViewApproved.dart';
 import 'package:cashapp/Screens/Components/RoundedButtons.dart';
 import 'package:flutter/material.dart';
 import 'package:cashapp/Constants.dart';
@@ -21,6 +22,33 @@ class _CashRequestSettleState extends State<CashRequestSettle> {
     //kToolbarHeight;
     final Width = MediaQuery.of(context).size.width;
     return Scaffold(
+       bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            selectedItemColor: HexColor("#EC5F5F"),
+            unselectedItemColor: Colors.grey,
+            iconSize: 27,
+            showUnselectedLabels: false,
+            showSelectedLabels: false,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard_outlined),
+                label: 'Dashboard',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.explore_outlined),
+                label: 'Discover',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.email_outlined),
+                label: 'Messeges',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_outlined),
+                label: 'Profile',
+              ),
+            ],
+          ),
       backgroundColor: primarybackgroundcolor,
       body: SingleChildScrollView(
         child: Padding(
@@ -346,6 +374,9 @@ class _CashRequestSettleState extends State<CashRequestSettle> {
                               fontweight: FontWeight.bold,
                               fontsize: 16,
                             ),
+                            Icon(Icons.download,
+                             color: Colors.red,
+                             ),
                           ],
                         ),
                       ],
@@ -362,7 +393,7 @@ class _CashRequestSettleState extends State<CashRequestSettle> {
                 backgroundcolor: HexColor("#FC5000"),
                 press: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CashRequest()),
+                  MaterialPageRoute(builder: (context) => const CashierViewApproved()),
                 ),
               ),
             ],

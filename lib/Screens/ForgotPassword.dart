@@ -1,4 +1,5 @@
 import 'package:cashapp/Constants.dart';
+import 'package:cashapp/Screens/ChangePassword.dart';
 import 'package:cashapp/Screens/ResetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -31,7 +32,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               SizedBox(height: Height * 0.090),
               Topic(
                 topic: "Fentons",
-                height: Height * 0.1,
+                height: Height * 0.050,
                 textalign: TextAlign.center,
                 width: double.infinity,
                 textColor: Colors.red,
@@ -39,7 +40,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 fontsize: 25,
                 margin: EdgeInsets.only(top: Height * 0.050),
               ),
-              SizedBox(height: Height * 0.1),
+            
               Topic(
                 topic: "Forgot Password?",
                 width: double.infinity,
@@ -67,7 +68,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 backgroundcolor: HexColor("#FC5000"),
                 press: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ResetPassword()),
+                  MaterialPageRoute(builder: (context) => ChangePassword()),
                 ),
               ),
             ],

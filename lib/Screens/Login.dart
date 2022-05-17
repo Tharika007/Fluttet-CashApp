@@ -1,6 +1,7 @@
 import 'package:cashapp/Constants.dart';
 import 'package:cashapp/Screens/CashRequest.dart';
 import 'package:cashapp/Screens/ForgotPassword.dart';
+import 'package:cashapp/Screens/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Components/Topics.dart';
@@ -68,7 +69,7 @@ class _LoginState extends State<Login> {
                 backgroundcolor: HexColor("#FC5000"),
                 press: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const CashRequest()),
+                  MaterialPageRoute(builder: (context) => const Home()),
                 ),
               ),
               Container(

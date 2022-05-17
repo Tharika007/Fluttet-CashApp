@@ -36,18 +36,18 @@ class Welcome extends StatelessWidget {
                 margin: EdgeInsets.only(top: Height * 0.050),
               ),
               const SizedBox(
-                height: 200,
+                height: 250,
               ),
               Topic(
                 topic: "Welcome to Cash Advance App",
                 width: double.infinity,
-                height: Height * 0.1,
+                height: Height * 0.080,
                 textalign: TextAlign.center,
                 textColor: HexColor("#FC5000"),
                 fontweight: FontWeight.bold,
                 fontsize: 22,
                 margin: EdgeInsets.only(
-                    top: Height * 0.050, bottom: Height * 0.010),
+                    top: Height * 0.050, ),
               ),
               RoundedButton(
                 hinttext: 'Get Started',

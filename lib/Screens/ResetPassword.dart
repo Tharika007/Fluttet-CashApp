@@ -21,6 +21,33 @@ class _ResetPasswordState extends State<ResetPassword> {
     //kToolbarHeight;
     final Width = MediaQuery.of(context).size.width;
     return Scaffold(
+       bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            selectedItemColor: HexColor("#EC5F5F"),
+            unselectedItemColor: Colors.grey,
+            iconSize: 27,
+            showUnselectedLabels: false,
+            showSelectedLabels: false,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard_outlined),
+                label: 'Dashboard',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.explore_outlined),
+                label: 'Discover',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.email_outlined),
+                label: 'Messeges',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_outlined),
+                label: 'Profile',
+              ),
+            ],
+          ),
       backgroundColor: primarybackgroundcolor,
       body: SingleChildScrollView(
         child: Padding(

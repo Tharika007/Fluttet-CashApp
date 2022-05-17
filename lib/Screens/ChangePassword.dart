@@ -1,19 +1,20 @@
 import 'package:cashapp/Constants.dart';
 import 'package:cashapp/Screens/ForgotPassword.dart';
+import 'package:cashapp/Screens/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'Components/Topics.dart';
 import './Components/TextFormfields.dart';
 import './Components/RoundedButtons.dart';
 
-class ResetPassword extends StatefulWidget {
-  const ResetPassword({Key? key}) : super(key: key);
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({Key? key}) : super(key: key);
 
   @override
-  State<ResetPassword> createState() => _ResetPasswordState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _ResetPasswordState extends State<ResetPassword> {
+class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     final Height =
@@ -21,6 +22,33 @@ class _ResetPasswordState extends State<ResetPassword> {
     //kToolbarHeight;
     final Width = MediaQuery.of(context).size.width;
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        selectedItemColor: HexColor("#EC5F5F"),
+        unselectedItemColor: Colors.grey,
+        iconSize: 27,
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard_outlined),
+            label: 'Dashboard',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore_outlined),
+            label: 'Discover',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.email_outlined),
+            label: 'Messeges',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_outlined),
+            label: 'Profile',
+          ),
+        ],
+      ),
       backgroundColor: primarybackgroundcolor,
       body: SingleChildScrollView(
         child: Padding(
@@ -39,27 +67,26 @@ class _ResetPasswordState extends State<ResetPassword> {
                 fontsize: 25,
                 margin: EdgeInsets.only(top: Height * 0.050),
               ),
-              SizedBox(height: Height * 0.150),
-              Topic(
-                topic: "4101",
-                width: double.infinity,
-                height: Height * 0.030,
-                textalign: TextAlign.center,
-                textColor: primaryblackcolor,
-                fontweight: FontWeight.bold,
-                fontsize: 15,
-                margin: EdgeInsets.only(top: Height * 0.050),
-              ),
-              Topic(
-                topic: "Mr.Sandaru Amarasinghe",
-                width: double.infinity,
-                height: Height * 0.030,
-                textalign: TextAlign.center,
-                textColor: primaryblackcolor,
-                fontweight: FontWeight.bold,
-                fontsize: 15,
-                margin: EdgeInsets.only(bottom: Height * 0.050),
-              ),
+              // Topic(
+              //   topic: "4101",
+              //   width: double.infinity,
+              //   height: Height * 0.030,
+              //   textalign: TextAlign.center,
+              //   textColor: primaryblackcolor,
+              //   fontweight: FontWeight.bold,
+              //   fontsize: 15,
+              //   margin: EdgeInsets.only(top: Height * 0.050),
+              // ),
+              // Topic(
+              //   topic: "Mr.Sandaru Amarasinghe",
+              //   width: double.infinity,
+              //   height: Height * 0.030,
+              //   textalign: TextAlign.center,
+              //   textColor: primaryblackcolor,
+              //   fontweight: FontWeight.bold,
+              //   fontsize: 15,
+              //   margin: EdgeInsets.only(bottom: Height * 0.050),
+              // ),
               RoundedTextFormField(
                 labeltext: "Email",
                 margin: EdgeInsets.only(bottom: Height * 0.040),
@@ -111,8 +138,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 backgroundcolor: HexColor("#FC5000"),
                 press: () => Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const ForgotPassword()),
+                  MaterialPageRoute(builder: (context) => const Home()),
                 ),
               ),
             ],

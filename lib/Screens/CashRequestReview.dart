@@ -1,4 +1,6 @@
 import 'package:cashapp/Screens/CashRequest.dart';
+import 'package:cashapp/Screens/Components/RondedButtons.dart';
+import 'package:cashapp/Screens/RejectorApprove.dart';
 import 'package:flutter/material.dart';
 import 'package:cashapp/Constants.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -20,6 +22,33 @@ class _CashRequestReviewState extends State<CashRequestReview> {
     //kToolbarHeight;
     final Width = MediaQuery.of(context).size.width;
     return Scaffold(
+       bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            selectedItemColor: HexColor("#EC5F5F"),
+            unselectedItemColor: Colors.grey,
+            iconSize: 27,
+            showUnselectedLabels: false,
+            showSelectedLabels: false,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard_outlined),
+                label: 'Dashboard',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.explore_outlined),
+                label: 'Discover',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.email_outlined),
+                label: 'Messeges',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_outlined),
+                label: 'Profile',
+              ),
+            ],
+          ),
       backgroundColor: primarybackgroundcolor,
       body: SingleChildScrollView(
         child: Padding(
@@ -59,7 +88,7 @@ class _CashRequestReviewState extends State<CashRequestReview> {
               ),
               Topic(
                 width: 300,
-                height: Height * 0.030,
+                height: Height * 0.020,
                 textalign: TextAlign.left,
                 topic: "From",
                 textColor: Colors.black,
@@ -75,19 +104,20 @@ class _CashRequestReviewState extends State<CashRequestReview> {
                 color: HexColor("#F6F7FA"),
                 child: Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                    padding:
+                        const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                     child: Column(
                       children: [
                         Topic(
                           topic: "Fentons",
                           width: double.infinity,
-                          height: Height * 0.070,
+                          height: Height * 0.040,
                           textColor: Colors.red,
                           textalign: TextAlign.center,
                           fontweight: FontWeight.bold,
                           fontsize: 25,
                           margin: EdgeInsets.only(
-                            top: Height * 0.050,
+                            top: Height * 0.020,
                           ),
                         ),
                         const SizedBox(
@@ -344,11 +374,28 @@ class _CashRequestReviewState extends State<CashRequestReview> {
                               fontweight: FontWeight.bold,
                               fontsize: 16,
                             ),
+                             Icon(Icons.download,
+                             color: Colors.red,
+                             ),
                           ],
                         ),
+                       
                       ],
                     ),
                   ),
+                ),
+              ),
+              RoundedButton(
+                hinttext: 'Next',
+                width: 180,
+                margin: EdgeInsets.only(
+                    bottom: Height * 0.040, top: Height * 0.040),
+                textColor: Colors.white,
+                backgroundcolor: HexColor("#FC5000"),
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => rejectorapprove()),
                 ),
               ),
             ],

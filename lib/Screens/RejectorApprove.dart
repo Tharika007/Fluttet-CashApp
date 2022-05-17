@@ -1,19 +1,21 @@
 import 'package:cashapp/Screens/CashRequest.dart';
-import 'package:cashapp/Screens/Components/RoundedButtons.dart';
+import 'package:cashapp/Screens/CashRequestSettle.dart';
+import 'package:cashapp/Screens/Components/RondedButtons.dart';
+import 'package:cashapp/Screens/RejectCashAdvance.dart';
 import 'package:flutter/material.dart';
 import 'package:cashapp/Constants.dart';
 import 'package:hexcolor/hexcolor.dart';
 import './Components/Topics.dart';
 import './Components/Texts.dart';
 
-class AcceptCash extends StatefulWidget {
-  const AcceptCash({Key? key}) : super(key: key);
+class rejectorapprove extends StatefulWidget {
+  const rejectorapprove({Key? key}) : super(key: key);
 
   @override
-  State<AcceptCash> createState() => _AcceptCashState();
+  State<rejectorapprove> createState() => _rejectorapproveState();
 }
 
-class _AcceptCashState extends State<AcceptCash> {
+class _rejectorapproveState extends State<rejectorapprove> {
   @override
   Widget build(BuildContext context) {
     final Height =
@@ -21,6 +23,33 @@ class _AcceptCashState extends State<AcceptCash> {
     //kToolbarHeight;
     final Width = MediaQuery.of(context).size.width;
     return Scaffold(
+       bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            selectedItemColor: HexColor("#EC5F5F"),
+            unselectedItemColor: Colors.grey,
+            iconSize: 27,
+            showUnselectedLabels: false,
+            showSelectedLabels: false,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard_outlined),
+                label: 'Dashboard',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.explore_outlined),
+                label: 'Discover',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.email_outlined),
+                label: 'Messeges',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_outlined),
+                label: 'Profile',
+              ),
+            ],
+          ),
       backgroundColor: primarybackgroundcolor,
       body: SingleChildScrollView(
         child: Padding(
@@ -60,7 +89,7 @@ class _AcceptCashState extends State<AcceptCash> {
               ),
               Topic(
                 width: 300,
-                height: Height * 0.030,
+                height: Height * 0.020,
                 textalign: TextAlign.left,
                 topic: "From",
                 textColor: Colors.black,
@@ -83,13 +112,13 @@ class _AcceptCashState extends State<AcceptCash> {
                         Topic(
                           topic: "Fentons",
                           width: double.infinity,
-                          height: Height * 0.070,
+                          height: Height * 0.040,
                           textColor: Colors.red,
                           textalign: TextAlign.center,
                           fontweight: FontWeight.bold,
                           fontsize: 25,
                           margin: EdgeInsets.only(
-                            top: Height * 0.050,
+                            top: Height * 0.020,
                           ),
                         ),
                         const SizedBox(
@@ -346,42 +375,47 @@ class _AcceptCashState extends State<AcceptCash> {
                               fontweight: FontWeight.bold,
                               fontsize: 16,
                             ),
+                            Icon(
+                              Icons.download,
+                              color: Colors.red,
+                            ),
                           ],
                         ),
-                        const SizedBox(height: 30),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            RoundedButton(
-                              hinttext: 'Approve',
-                              width: 120,
-                              margin: EdgeInsets.only(bottom: Height * 0.050),
-                              textColor: Colors.white,
-                              backgroundcolor: HexColor("#FC5000"),
-                              press: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const CashRequest()),
-                              ),
-                            ),
-                            RoundedButton(
-                              hinttext: 'Reject',
-                              width: 120,
-                              margin: EdgeInsets.only(bottom: Height * 0.050),
-                              textColor: Colors.white,
-                              backgroundcolor: HexColor("#FC5000"),
-                              press: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const CashRequest()),
-                              ),
-                            ),
-                          ],
-                        )
                       ],
                     ),
                   ),
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  RoundedButton(
+                    hinttext: 'Approve',
+                    width: 150,
+                    margin: EdgeInsets.only(
+                        bottom: Height * 0.040, top: Height * 0.040),
+                    textColor: Colors.white,
+                    backgroundcolor: HexColor("#FC5000"),
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CashRequestSettle()),
+                    ),
+                  ),
+                  RoundedButton(
+                    hinttext: 'Reject',
+                    width: 150,
+                    margin: EdgeInsets.only(
+                        bottom: Height * 0.040, top: Height * 0.040),
+                    textColor: Colors.white,
+                    backgroundcolor: HexColor("#FC5000"),
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RejectCashAdvance()),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

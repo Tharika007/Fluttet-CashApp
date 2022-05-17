@@ -1,5 +1,6 @@
 import 'package:cashapp/Constants.dart';
 import 'package:cashapp/Screens/CashRequest.dart';
+import 'package:cashapp/Screens/UploadBill.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -8,12 +9,11 @@ import './Components/RoundedButtons.dart';
 
 class GenerateReport extends StatefulWidget {
   @override
-  State<GenerateReport> createState() => _GenerateReportState();
+  _GenerateReportState createState() => _GenerateReportState();
 }
 
 class _GenerateReportState extends State<GenerateReport> {
-  DateTime _selectedDate;
-  TextEditingController _textEditingController = TextEditingController();
+  late DateTime _dateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -58,15 +58,28 @@ class _GenerateReportState extends State<GenerateReport> {
                 textalign: TextAlign.center,
                 textColor: primaryblackcolor,
                 fontweight: FontWeight.bold,
-                fontsize: 15,
+                fontsize: 18,
                 margin: EdgeInsets.only(top: Height * 0.050),
               ),
               TextFormField(
+                onTap: () {
+                  showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2040),
+                  ).then((date) {
+                    setState(() {
+                      _dateTime = date!;
+                    });
+                  });
+                },
                 textAlign: TextAlign.left,
                 cursorColor: Colors.black,
                 decoration: InputDecoration(
                   labelText: "From Date",
-                  labelStyle: const TextStyle(fontSize: 18, color: Colors.grey),
+                  labelStyle: const TextStyle(fontSize: 18, color: Colors.black),
+                  suffixIcon: const Icon(Icons.calendar_month),
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(7.0)),
                     borderSide: BorderSide.none,
@@ -76,6 +89,46 @@ class _GenerateReportState extends State<GenerateReport> {
                   contentPadding: const EdgeInsets.all(17),
                 ),
               ),
+              SizedBox( height: Height * 0.050),
+              TextFormField(
+                onTap: () {
+                  showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2040),
+                  ).then((date) {
+                    setState(() {
+                      _dateTime = date!;
+                    });
+                  });
+                },
+                textAlign: TextAlign.left,
+                cursorColor: Colors.black,
+                decoration: InputDecoration(
+                  labelText: "To Date",
+                  labelStyle: const TextStyle(fontSize: 18, color: Colors.black),
+                  suffixIcon: const Icon(Icons.calendar_month),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: HexColor("#F6F7FA"),
+                  contentPadding: const EdgeInsets.all(17),
+                ),
+              ),
+              RoundedButton(
+                hinttext: 'Genarate Report',
+                width: double.infinity,
+                margin: EdgeInsets.only(bottom: Height * 0.050, top: Height * 0.1),
+                textColor: Colors.white,
+                backgroundcolor: HexColor("#FC5000"),
+                press: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UploadBill()),
+                ),
+              ),
             ],
           ),
         ),
@@ -83,34 +136,3 @@ class _GenerateReportState extends State<GenerateReport> {
     );
   }
 }
-
-_selectDate(BuildContext context) async {
-    DateTime newSelectedDate = await showDatePicker(
-        context: context,
-        initialDate: _selectedDate != null ? _selectedDate : DateTime.now(),
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2040),
-        builder: (BuildContext context, Widget child) {
-          return Theme(
-            data: ThemeData.dark().copyWith(
-              colorScheme: ColorScheme.dark(
-                primary: Colors.deepPurple,
-                onPrimary: Colors.white,
-                surface: Colors.blueGrey,
-                onSurface: Colors.yellow,
-              ),
-              dialogBackgroundColor: Colors.blue[500],
-            ),
-            child: child,
-          );
-        });
-
-    if (newSelectedDate != null) {
-      _selectedDate = newSelectedDate;
-      _textEditingController
-        ..text = DateFormat.yMMMd().format(_selectedDate)
-        ..selection = TextSelection.fromPosition(TextPosition(
-            offset: _textEditingController.text.length,
-            affinity: TextAffinity.upstream));
-    }
-  }
